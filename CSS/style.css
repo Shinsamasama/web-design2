@@ -1,0 +1,627 @@
+@charset "UTF-8";
+
+html {
+    font-size: 100%;
+  }
+  
+body {
+    background-color: #050507;
+    color: #050507;
+    font-family: 'Source Sans 3', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: bottom;
+}
+  
+li {
+    list-style: none;
+}
+
+
+
+
+
+/*
+ハンバーガ―メニュー
+初期状態は「display: none;」で非表示にしておく
+所定のスクロール位置にきたらjQueryのfadeInで表示する
+※main.jsの「ロゴ、ハンバーガーメニューの表示」を参照
+*/
+
+.hamburger {
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    /* 一番上にくるように設定 */
+    z-index: 40;
+    display: none;
+  }
+
+  .hamburger span {
+    width: 30px;
+    height: 1px;
+    background-color: #fff;
+    position: absolute;
+    left: 6px;
+    transition: 0.5s ease-in-out;
+  }
+
+  .hamburger span:nth-child(1) {
+    top: 11px;
+  }
+
+  .hamburger span:nth-child(2) {
+    top: 21px;
+  }
+
+  .hamburger span:nth-child(3) {
+    top: 31px;
+  }
+
+
+  .hamburger.active span:nth-child(1) {
+    top: 21px;
+    left: 6px;
+    transform: rotate(-45deg);
+  }
+
+  .hamburger.active span:nth-child(2),
+  .hamburger.active span:nth-child(3) {
+    top: 21px;
+    transform: rotate(45deg);
+  }
+
+  #navi {
+    width: 100%;
+    background-color: #fff;
+    color: #050507;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    transform: translateY(-100%);
+    transition: 0.6s;
+    /* ロゴ、ハンバーガーより下でAccessページの背景画像よりも上にくるよう設定 */
+    z-index: 30;
+  }
+
+  #navi ul {
+    width: 100%;
+    background-color: #050507;
+    padding: 80px 0 30px 0;
+  }
+
+  #navi ul li {
+    padding: 10px 0;
+  }
+
+  #navi ul li a {
+    display: block;
+  }
+
+
+  /*
+  メニュー表示
+  ハンバーガーメニューがクリックされた際に、jQueryで#naviにactiveクラスを追加して、
+  メニューを上から下にスライドさせて表示する
+  */
+  #navi.active {
+    transform: translateY(0%);
+  }
+  
+
+  /*フェード表示
+InformationとGalleryの画像を下からふわっと表示させるためのクラス
+「transform: translate(0, 50%);」で下にさげた状態で、
+「opacity: 0;」で非表示にしておく*/
+
+
+.fadein {
+  opacity: 0;
+  transform: translate(0, 50%);
+  transition: 2s; 
+}
+
+
+/*
+fadeinクラスの要素が画面下にきたタイミングで、jQueryのinviewにてshowクラスを追加して
+「transform: translate(0, 0);」と「opacity: 1;」で表示させる
+※main.jsの「フェード表示」を参照*/
+
+
+.fadein.show {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+
+
+.images-wrapping {
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+
+.gazo1, .gazo2, .gazo3 {
+    width: 100%;
+    width: calc(100%/3);
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+
+.midashi {
+     font-size: 100px;
+     font-family: normal;
+     color: #fff;
+     text-align: center;
+     padding-top: 121px;
+     letter-spacing: 3px;
+}
+
+.information-wrap {
+     text-align: center;
+}
+
+.title {
+    font-size: 60px;
+    color: #fff;
+    letter-spacing: 1.8px;
+    margin-top: 120px;
+}
+
+.script {
+    color: #fff;
+    font-size: 27px;
+    margin-bottom: 154px;
+}
+
+.script span {
+    font-size: 40px;
+    font-family: normal;
+    font-weight: bold;
+}
+
+
+
+
+#section2 {
+    text-align: center;
+}
+
+
+.flowers li img {
+    width: 35%;
+}
+
+.flowers li {
+    margin-bottom: 60px;
+}
+
+.flowers li:nth-child(odd){
+    text-align: left;
+    padding-left: 350px;
+}
+
+.flowers li:nth-child(even){
+    text-align: right;
+    padding-right: 350px;
+}
+
+
+
+#section3 {
+    background: transparent url(../img/bg.jpg) no-repeat;
+    width: 100%;
+    text-align: center;
+}
+
+#access {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 1327px;
+}
+
+.access-title {
+    font-size: 60px;
+    color: #fff;
+    letter-spacing: 1.8px;
+    margin-bottom: 50px;
+}
+
+.access-script {
+    font-size: 16px;
+    font-family: normal;
+    color: #fff;
+    margin-top: 30px;
+}
+
+.access-script > span {
+    font-size: 28px;
+    font-family: normal;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 24px;
+}
+
+
+.map {
+    width: 270px;
+    height: 51px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffff;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.map:hover {
+    opacity: 0.7;
+}
+
+
+
+
+.contact-title {
+    font-size: 60px;
+    color: #fff;
+    letter-spacing: 1.8;
+    margin-top: 13px;
+    margin-bottom: 49px;
+    text-align: center;
+}
+
+
+.inquiry-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.syutten {
+    width: 270px;
+    height: 51px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sonota {
+    width: 270px;
+    height: 51px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffff;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.syutten:hover {
+    opacity: 0.7;
+}
+
+.sonota:hover {
+    opacity: 0.7;
+}
+
+
+
+.footer-wrapper1 {
+    margin-top: 200px;
+    padding-top: 83px;
+    padding-left: 30px;
+    border-top: #fff 1px solid;
+}
+
+.footer-name {
+    font-size: 12px;
+    color: #fff;
+    font-family: normal;
+}
+
+.footer-address {
+    color: #fff;
+}
+
+.footer-sns {
+    display: flex;
+    text-align: left;
+    padding-left: 30px;
+    margin-top: 34px;
+    
+}
+
+.sns {
+    color: #fff;
+    padding-left: 18px;
+}
+
+.footer-sns li:first-child {
+    padding-left: 0px;
+}
+
+
+.policy-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 32px;
+}
+
+.footer-policy {
+    font-size: 12px;
+    color: #fff;
+}
+
+.footer-something {
+    font-size: 12px;
+    color: #fff;
+    padding-left: 18px;
+}
+
+
+
+
+
+@media(max-width:800px) {
+
+
+body {
+    text-align: center;
+}
+
+.hamburger {
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    /* 一番上にくるように設定 */
+    z-index: 40;
+}  
+
+#navi {
+    width: 100%;
+    background-color: #fff;
+    color: #050507;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    transform: translateY(-100%);
+    transition: 0.6s;
+    /* ロゴ、ハンバーガーより下でAccessページの背景画像よりも上にくるよう設定 */
+    z-index: 30;
+}
+
+#navi ul {
+    width: 100%;
+    background-color: #050507;
+    padding: 80px 0 30px 0;
+}
+
+#navi ul li {
+    padding: 10px 0;
+}
+
+#navi ul li a {
+    display: block;
+}
+
+.gazo2 {
+    width: 100%;
+}
+  
+.gazo1, .gazo3 {
+    display: none;
+}
+
+
+
+.midashi {
+    font-size: 48px;
+    font-family: normal;
+    color: #fff;
+    letter-spacing: 1.44px;
+    margin-top: 60px;
+    margin-bottom: 60px; 
+}
+
+.title {
+    font-size: 32px;
+    font-family: normal;
+    color: #fff;
+    letter-spacing: 0.96px;
+    margin-top: 88px;
+}
+
+.script {
+    font-size: 16px;
+    font-family: normal;
+    color: #fff;
+    letter-spacing: 0px;
+}
+
+.flowers {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.flowers li  {
+    margin-bottom: 30px;
+}
+
+.flowers li:last-child {
+    margin-bottom: 0px;
+}
+
+
+
+#section3 {
+    background: transparent url(../img/bg.jpg) no-repeat;
+    background-position: center;
+    width: 100%;
+    opacity: 0.8;
+}
+
+#access { 
+    width: 375px;
+    height: 915px;
+}
+
+.access-title {
+    font-size: 32px;
+    font-family: normal;
+    color: #fff;
+    padding-top: 287px;
+}
+
+.access-script {
+    font-size: 16px;
+    font-family: normal;
+    color: #fff;
+    letter-spacing: 0px;
+}
+
+.access-script > span {
+    display: block;
+    font-size: 28px;
+    font-family: normal;
+    font-weight: bold;
+    margin-top: 54px;
+    margin-bottom: 24px;
+}
+
+.map {
+    width: 270px;
+    height: 51px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffff;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.contact-title {
+    font-size: 32px;
+    font-family: normal;
+    color: #fff;
+    letter-spacing: 0.96px;
+    margin-top: 7px;
+}
+
+.syutten {
+    width: 315px;
+    height: 81px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 48px;
+}
+
+.sonota {
+    width: 315px;
+    height: 81px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+
+.white-border {
+    border: solid #fff 1px;
+    margin-top: 200px;
+    margin-bottom: 63px;
+}
+
+
+.footer-wrapper1 {
+    text-align: left;
+    padding-left: 30px;
+}
+
+
+.footer-name {
+    font-size: 12px;
+    font-family: normal;
+    color: #fff;
+}
+
+.footer-sns {
+    display: flex;
+}
+
+.footer-sns {
+    padding-left: 15px;
+}
+
+.sns {
+    font-size: 12px;
+    font-family: normal;
+    color: #fff;
+    padding-left: 15px;
+}
+
+.policy-wrapper {
+    display: flex;
+    padding-left: 30px;
+    margin-top: 34px;
+}
+
+.footer-policy {
+    font-size: 12px;
+    font-family: normal;
+    color: #fff;
+}
+
+.footer-something {
+    font-size: 12px;
+    font-family: normal;
+    color: #fff;
+    padding-left: 28px;
+}  
+
+
+
+
+}
