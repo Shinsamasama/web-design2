@@ -468,6 +468,10 @@ body {
     letter-spacing: 0px;
 }
 
+.script span {
+    font-size: 32px;
+}
+
 .flowers {
     padding-left: 30px;
     padding-right: 30px;
